@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>ENTRIVIADOS</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="body">
+    <header class="header">
+      <h1 id="tituloPrincipal">ENTRIVIADOS</h1>
+    </header> 
+
+    <main class="main">
+      <h3 class="titleT">TRIVIA GEOGRAFÍA</h3>
+
+      <form>
+        <div class="popup">
+          <span class="popuptext" id="myPopup">Respuesta Correcta!</span>
+        </div>
+        <div class="popup">
+          <span class="popuptext" id="myPopup2">Respuesta Incorrecta!</span>
+        </div>
+        <!-- División de Pregunta 1. Es la única que se muestra desde el comienzo-->
+        <div class="divPregunta1" id="IdGeoNumero1" style="display:block">
+          <h3 class="pregunta1">¿Cuál es la capital de Noruega?</h3>
+          <button type="button" class="button button1 button2" id="r1p1G" onclick="siguientePregunta(r1p1G)">Oslo</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r2p1G" onclick="siguientePregunta(r2p1G)">Estocolmo</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r3p1G" onclick="siguientePregunta(r3p1G)">Dublín</button>
+        </div>
+        <!-- División de Pregunta 2. -->
+        <div class="divPregunta2" id="IdGeoNumero2" style="display:none">
+          <h3 class="pregunta2">¿En qué país se encuentra el río Sena?</h3>
+          <button type="button" class="button button1 button2" id="r1p2G" onclick="siguientePregunta(r1p2G)">Francia</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r2p2G" onclick="siguientePregunta(r2p2G)">Italia</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r3p2G" onclick="siguientePregunta(r3p2G)">Alemania</button>
+        </div>
+        <!-- División de Pregunta 3. -->
+        <div class="divPregunta3" id="IdGeoNumero3" style="display:none">
+          <h3 class="pregunta3">¿En qué continente se encuentra Libia?</h3>
+          <button type="button" class="button button1 button2" id="r1p3G" onclick="siguientePregunta(r1p3G)">Asia</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r2p3G" onclick="siguientePregunta(r2p3G)">Europa</button>
+          <br> 
+          <button type="button" class="button button1 button2" id="r3p3G" onclick="siguientePregunta(r3p3G)">Africa</button>
+        </div>
+        <!-- División de resultados, se muestra el nombre del jugador y el porcentaje que obtuvo. -->
+        <div id="IdResultadoGeografia"  class="styleResp" style="display:none">
+          <h2 id="nombreJugador"></h2>
+          <h2 id="mostrarResultadosGeografia"></h2>
+          <!-- Sección para seleccionar volver a jugar -->
+          <h3>¿Deseas seguir jugando?</h3>
+          <a href="/triviaAnatomia.html">
+            <button class="button button3" id="btnAnatomia" type="button"">TRIVIA ANATOMÍA</button>
+          </a>
+          <a href="/triviaGeografia.html">
+            <button class="button button3" id="btnGeografia" type="button" ">TRIVIA GEOGRAFÍA</button>
+          </a>
+          <a href="/index.html">
+            <button class="button button3" id="indexReturn" type="button" ">VOLVER AL INICIO</button>
+          </a>
+        </div>
+    </form>
+    </main>
+
+    <footer class="footer">
+      <span> Made by Jessica Toro & Angela Vergara for  &lt;Laboratoria&gt; </span>
+    </footer>
+
+    <script>
+      let contadorCorrectas=0;
+      let porcentajeCorrectas=0;
+      // Funciones para habilitar o deshabilitar popup de respuesta
+      function myFunction(){
+        let popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+      }
+      function myFunction2(){
+        let popup = document.getElementById("myPopup2");
+        popup.classList.toggle("show");
+      }
+      /*función para identificar respuestas correctas, mostrar y ocultar DIVs según corresponda. */
+      function siguientePregunta(id){
+        if (id==r1p1G){
+          contadorCorrectas+=1;
+          myFunction();
+          setTimeout(function(){
+            document.getElementById("myPopup").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'block';
+            document.getElementById('IdGeoNumero3').style.display = 'none';
+          },1500);
+        }
+        else if(id==r1p2G){
+          contadorCorrectas+=1;
+          myFunction();
+          setTimeout(function(){
+            document.getElementById("myPopup").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'none';
+            document.getElementById('IdGeoNumero3').style.display = 'block';
+          },1500);
+        }
+        else if(id==r3p3G){
+          contadorCorrectas+=1;
+          myFunction();
+          setTimeout(function(){
+            document.getElementById("myPopup").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'none';
+            document.getElementById('IdGeoNumero3').style.display = 'none';
+            document.getElementById('IdResultadoGeografia').style.display = 'block';
+          },1500);
+        }
+        else if(id==r2p1G||id==r3p1G){ 
+          myFunction2();
+          setTimeout(function(){
+            document.getElementById("myPopup2").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'block';
+            document.getElementById('IdGeoNumero3').style.display = 'none';
+          },1500);        
+        }
+        else if(id==r2p2G||id==r3p2G){
+          myFunction2();
+          setTimeout(function(){
+            document.getElementById("myPopup2").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'none';
+            document.getElementById('IdGeoNumero3').style.display = 'block';
+          },1500);        
+
+        }
+        else if(id==r1p3G||id==r2p3G){
+          myFunction2();
+          setTimeout(function(){
+            document.getElementById("myPopup2").classList.toggle("show");
+            document.getElementById('IdGeoNumero1').style.display = 'none';
+            document.getElementById('IdGeoNumero2').style.display = 'none';
+            document.getElementById('IdGeoNumero3').style.display = 'none';
+            document.getElementById('IdResultadoGeografia').style.display = 'block';
+          },1500);        
+        }
+        //calculo de porcentaje según respuestas correctas
+        porcentajeCorrectas=(contadorCorrectas/3*100).toFixed(0).toString();
+        //publicación de Resultados, según cantidad de respuestas correctas.   
+        if(contadorCorrectas==0){
+          document.getElementById('mostrarResultadosGeografia').innerHTML = ("¡OOPS! Es un buen momento para comenzar a viajar! Puntaje: "+ porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==1){
+          document.getElementById('mostrarResultadosGeografia').innerHTML = ("¡MMMM... Podrías hacerlo mejor, te invitamos a conocer más lugares! Tu puntaje es: "+porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==2){
+          document.getElementById('mostrarResultadosGeografia').innerHTML = ("¡NADA MAL! Sigue aprendiendo. Tu puntaje es: "+porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==3){
+          document.getElementById('mostrarResultadosGeografia').innerHTML = ("¡WOW! IMPRESIONANTE!. Tu puntaje es: "+porcentajeCorrectas+"%");
+        } 
+        // extracción de nombre de usuario almacenado en el localstorage
+        document.getElementById('nombreJugador').innerHTML = ( localStorage.getItem('nombreDeUsuario'));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>ENTRIVIADOS</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="body">
+
+    <header class="header">
+      <h1 id="tituloPrincipal">ENTRIVIADOS</h1>
+    </header>
+
+    <main class="main">
+
+      <h3 class="titleT">TRIVIA ANATOMÍA</h3>
+        <div class="popup">
+          <span class="popuptext" id="myPopup1">Respuesta Correcta!</span>
+        </div>
+        <div class="popup">
+          <span class="popuptext" id="myPopup3">Respuesta Incorrecta!</span>
+        </div>
+
+      <form>
+        <!-- División de Pregunta 1. Es la única que se muestra desde el comienzo-->
+        <div class="divPregunta1" id="IdAnNumero1" style="display:block">
+          <h3 class="pregunta1">¿Cuál de estos huesos esta en la mano?</h3>
+          <button type="button" class="button button1 button2" id="r1p1A" onclick="siguientePregunta(r1p1A)">Trapecio</button> 
+
+          <button type="button" class="button button1 button2" id="r2p1A" onclick="siguientePregunta(r2p1A)">Femur</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r3p1A" onclick="siguientePregunta(r3p1A)">Martillo</button>
+        </div>
+
+        <!-- División de Pregunta 2.-->
+        <div class="divPregunta2" id="IdAnNumero2" style="display:none">
+          <h3 class="pregunta2">¿Cuál es el organo encargado de filtrar la sangre?</h3>
+          <button type="button" class="button button1 button2" id="r1p2A" onclick="siguientePregunta(r1p2A)">Pulmon</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r2p2A" onclick="siguientePregunta(r2p2A)">Cerebro</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r3p2A" onclick="siguientePregunta(r3p2A)">Riñon</button>
+        </div>
+          <!-- División de Pregunta 3.-->
+        <div class="divPregunta3" id="IdAnNumero3" style="display:none">
+          <h3 class="pregunta3">¿Qué celulas se encuentran en el cerebro?</h3>
+          <button type="button" class="button button1 button2" id="r1p3A" onclick="siguientePregunta(r1p3A)">Neuronas</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r2p3A" onclick="siguientePregunta(r2p3A)">Eucariotas</button>
+          <br>
+          <button type="button" class="button button1 button2" id="r3p3A" onclick="siguientePregunta(r3p3A)">Globulos rojos</button>
+        </div>
+        <!-- División de resultados, se muestra el nombre del jugador y el porcentaje que obtuvo. -->
+
+        <div id="IdResultadoAnatomia"  class="styleResp" style="display:none"> 
+          <h2 id="nombreJugadorA"></h2>
+          <h2 id="mostrarResultadosAnatomia"></h2>
+          <!-- Sección para seleccionar volver a jugar -->
+          <h3>¿Deseas seguir jugando?</h3>
+          <a href="/triviaAnatomia.html">
+            <button class="button button3" id="btnAnatomia" type="button"">TRIVIA ANATOMÍA</button>
+          </a>
+          <a href="/triviaGeografia.html">
+            <button class="button button3" id="btnGeografia" type="button" ">TRIVIA GEOGRAFÍA</button>
+          </a>
+          <a href="/index.html">
+            <button class="button button3" id="indexReturn" type="button" ">VOLVER AL INICIO</button>
+          </a>
+        </div>
+      </form>
+    </main>
+    <aside class="instruction">
+      <button class="button3">Tiempo restante <label id="demo"></label></button>
+      <p></p>
+    </aside>
+
+    <footer class="footer">
+      <span> Made by Jessica Toro & Angela Vergara for  &lt;Laboratoria&gt; </span>
+    </footer>
+
+    <script>
+      let contadorCorrectas=0;
+      let porcentajeCorrectas=0;
+      timedText();
+      // var timeOver=1;
+      //funcion para habilitar o deshabilitar popup de respuesta
+      function myFunction(){
+        let popup = document.getElementById("myPopup1");
+        popup.classList.toggle("show");
+      }
+      function myFunction2(){
+        let popup1 = document.getElementById("myPopup3");
+        popup1.classList.toggle("show");
+      }
+      //función para identificar respuestas correctas, y publicar un alert. Se muestran y ocultar DIVs según corresponda.  
+      function siguientePregunta(id){
+        if (id==r1p1A){
+          contadorCorrectas+=1;
+          myFunction();       
+          setTimeout(function(){
+          nextDiv(1,1);
+          },1500);
+        }
+        else if(id==r3p2A){
+          contadorCorrectas+=1;
+          myFunction();
+          setTimeout(function(){
+            nextDiv(2,1);
+            timedText();
+          },1500);
+        }
+        else if(id==r1p3A){
+          contadorCorrectas+=1;
+          myFunction();
+          setTimeout(function(){
+            nextDiv(3,1);
+            timedText();
+          },1500);
+        }
+        else if(id==r2p1A||id==r3p1A){ 
+          myFunction2();
+          setTimeout(function(){
+            nextDiv(1,3);
+            timedText();
+          },1500);
+        }
+        else if(id==r1p2A||id==r2p2A){
+          myFunction2();
+          setTimeout(function(){
+            nextDiv(2,3);
+            timedText();
+          },1500);
+        }
+        else if(id==r2p3A||id==r3p3A){
+          myFunction2();
+          setTimeout(function(){
+            nextDiv(3,3);
+            timedText();
+          },1500);
+        }  
+        //calculo de porcentaje según respuestas correctas.
+        porcentajeCorrectas=(contadorCorrectas/3*100).toFixed(0).toString();  
+        //publicación de Resultados, según cantidad de respuestas correctas.
+        if(contadorCorrectas==0){
+          document.getElementById('mostrarResultadosAnatomia').innerHTML = ("¡OOPS! Espero que no seas doctor!  "+ porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==1){
+          document.getElementById('mostrarResultadosAnatomia').innerHTML = ("¡MMMM... Te hace falta conocer mas tu cuerpo! Tu puntaje es: "+porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==2){
+          document.getElementById('mostrarResultadosAnatomia').innerHTML = ("¡NADA MAL! Sigue aprendiendo! Tu puntaje es: "+porcentajeCorrectas+"%");
+        }
+        else if(contadorCorrectas==3){
+          document.getElementById('mostrarResultadosAnatomia').innerHTML = ("¡WOW! IMPRESIONANTE!! Tu puntaje es: "+porcentajeCorrectas+"%");
+        }
+        // extracción de nombre de usuario almacenado en el localstorage
+        document.getElementById('nombreJugadorA').innerHTML = ( localStorage.getItem('nombreDeUsuario'));
+      }
+      function timedText() {
+        setTimeout(myTimeout1, 1000); 
+        setTimeout(myTimeout2, 2000); 
+        setTimeout(myTimeout3, 3000); 
+        setTimeout(myTimeout4, 4000); 
+        setTimeout(myTimeout5, 5000); 
+        setTimeout(myTimeout6, 6000);
+      }
+      function myTimeout1() {
+        document.getElementById("demo").innerHTML = ": 5 segundos";
+      }
+      function myTimeout2() {
+        document.getElementById("demo").innerHTML = ": 4 segundos";
+      }
+      function myTimeout3() {
+        document.getElementById("demo").innerHTML = ": 3 segundos";
+      }
+      function myTimeout4() {
+        document.getElementById("demo").innerHTML = ": 2 segundos";
+      }
+      function myTimeout5() {
+        document.getElementById("demo").innerHTML = ": 1 segundos";
+      }
+      function myTimeout6() {
+        document.getElementById("demo").innerHTML = ": TIME OVER!!!";
+        // timeOver=0;
+        //cambiar de pregunta
+      }
+      // funcion para cambiar de pregunta
+      function nextDiv(nDiv,idPopup){
+        document.getElementById("myPopup"+idPopup).classList.toggle("show");
+        document.getElementById('IdAnNumero'+nDiv).style.display = 'none';
+        if(nDiv == 3){
+          document.getElementById('IdResultadoAnatomia').style.display = 'block';
+        }
+        else{
+          document.getElementById('IdAnNumero'+(nDiv+1)).style.display = 'block';
+        }
+      } 
+    </script> 
+  </body>
+</html>

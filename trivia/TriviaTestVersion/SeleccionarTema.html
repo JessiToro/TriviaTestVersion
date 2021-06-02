@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <title>ENTRIVIADOS</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="body">
+    <header class="header">
+      <h1 id="tituloPrincipal">ENTRIVIADOS</h1>
+    </header>
+    <main class="main">
+      <div class="instruction" id="resultado">
+        <h3> Hola <label id="nombre1"></label> selecciona el tema en el que quieres participar</h3>
+      </div>
+      <div>
+        <a href="/triviaAnatomia.html">
+          <button class="button button3" id="btnAnatomia" type="button"">TRIVIA ANATOMÍA</button>
+        </a>
+        <a href="/triviaGeografia.html">
+          <button class="button button3" id="btnGeografia" type="button" ">TRIVIA GEOGRAFÍA</button>
+        </a>
+      </div>
+    </main>
+    <footer class="footer">
+      <span> Made by Jessica Toro & Angela Vergara for  &lt;Laboratoria&gt; </span>
+    </footer>
+    <script> 
+      document.getElementById('nombre1').innerHTML=localStorage.getItem('nombreDeUsuario');
+    </script>
+  </body>
+</html> 
