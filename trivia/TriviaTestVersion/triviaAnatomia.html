@@ -31,8 +31,7 @@
         <!-- División de Pregunta 1. Es la única que se muestra desde el comienzo-->
         <div class="divPregunta1" id="IdAnNumero1" style="display:block">
           <h3 class="pregunta1">¿Cuál de estos huesos esta en la mano?</h3>
-          <button type="button" class="button button1 button2" id="r1p1A" onclick="siguientePregunta(r1p1A)">Trapecio</button> 
-
+          <button type="button" class="button button1 button2" id="r1p1A" onclick="siguientePregunta(r1p1A)">Trapecio</button>
           <button type="button" class="button button1 button2" id="r2p1A" onclick="siguientePregunta(r2p1A)">Femur</button>
           <br>
           <button type="button" class="button button1 button2" id="r3p1A" onclick="siguientePregunta(r3p1A)">Martillo</button>
@@ -58,7 +57,7 @@
         </div>
         <!-- División de resultados, se muestra el nombre del jugador y el porcentaje que obtuvo. -->
 
-        <div id="IdResultadoAnatomia"  class="styleResp" style="display:none"> 
+        <div id="IdResultadoAnatomia"  class="styleResp" style="display:none">
           <h2 id="nombreJugadorA"></h2>
           <h2 id="mostrarResultadosAnatomia"></h2>
           <!-- Sección para seleccionar volver a jugar -->
@@ -88,7 +87,7 @@
       let contadorCorrectas=0;
       let porcentajeCorrectas=0;
       timedText();
-      // var timeOver=1;
+
       //funcion para habilitar o deshabilitar popup de respuesta
       function myFunction(){
         let popup = document.getElementById("myPopup1");
@@ -98,54 +97,55 @@
         let popup1 = document.getElementById("myPopup3");
         popup1.classList.toggle("show");
       }
-      //función para identificar respuestas correctas, y publicar un alert. Se muestran y ocultar DIVs según corresponda.  
+      //función para identificar respuestas correctas, y publicar un alert. Se muestran y ocultar DIVs según corresponda.
       function siguientePregunta(id){
         if (id==r1p1A){
           contadorCorrectas+=1;
-          myFunction();       
+          myFunction();
           setTimeout(function(){
-          nextDiv(1,1);
+            nextDiv(1,1);
           },1500);
+          timedText();
         }
         else if(id==r3p2A){
           contadorCorrectas+=1;
           myFunction();
           setTimeout(function(){
             nextDiv(2,1);
-            timedText();
           },1500);
+          timedText();
         }
         else if(id==r1p3A){
           contadorCorrectas+=1;
           myFunction();
           setTimeout(function(){
             nextDiv(3,1);
-            timedText();
           },1500);
+          timedText();
         }
-        else if(id==r2p1A||id==r3p1A){ 
+        else if(id==r2p1A||id==r3p1A){
           myFunction2();
           setTimeout(function(){
             nextDiv(1,3);
-            timedText();
           },1500);
+          timedText();
         }
         else if(id==r1p2A||id==r2p2A){
           myFunction2();
           setTimeout(function(){
             nextDiv(2,3);
-            timedText();
           },1500);
+          timedText();
         }
         else if(id==r2p3A||id==r3p3A){
           myFunction2();
           setTimeout(function(){
             nextDiv(3,3);
-            timedText();
           },1500);
-        }  
+          timedText();
+        }
         //calculo de porcentaje según respuestas correctas.
-        porcentajeCorrectas=(contadorCorrectas/3*100).toFixed(0).toString();  
+        porcentajeCorrectas=(contadorCorrectas/3*100).toFixed(0).toString();
         //publicación de Resultados, según cantidad de respuestas correctas.
         if(contadorCorrectas==0){
           document.getElementById('mostrarResultadosAnatomia').innerHTML = ("¡OOPS! Espero que no seas doctor!  "+ porcentajeCorrectas+"%");
@@ -162,35 +162,21 @@
         // extracción de nombre de usuario almacenado en el localstorage
         document.getElementById('nombreJugadorA').innerHTML = ( localStorage.getItem('nombreDeUsuario'));
       }
+
       function timedText() {
-        setTimeout(myTimeout1, 1000); 
-        setTimeout(myTimeout2, 2000); 
-        setTimeout(myTimeout3, 3000); 
-        setTimeout(myTimeout4, 4000); 
-        setTimeout(myTimeout5, 5000); 
-        setTimeout(myTimeout6, 6000);
+        for (let i = 1; i <7 ; i++) {
+          if( i < 6){
+            setTimeout(function() {document.getElementById("demo").innerHTML = (6-i) +" segundos"}, (i*1000));
+          }
+          else if(i==6){
+            setTimeout(function() {document.getElementById("demo").innerHTML = "TIME OVER!!";}, (i*1000));  
+          }
+          else{
+            alert("algo raro pasa");
+          }
+        }
       }
-      function myTimeout1() {
-        document.getElementById("demo").innerHTML = ": 5 segundos";
-      }
-      function myTimeout2() {
-        document.getElementById("demo").innerHTML = ": 4 segundos";
-      }
-      function myTimeout3() {
-        document.getElementById("demo").innerHTML = ": 3 segundos";
-      }
-      function myTimeout4() {
-        document.getElementById("demo").innerHTML = ": 2 segundos";
-      }
-      function myTimeout5() {
-        document.getElementById("demo").innerHTML = ": 1 segundos";
-      }
-      function myTimeout6() {
-        document.getElementById("demo").innerHTML = ": TIME OVER!!!";
-        // timeOver=0;
-        //cambiar de pregunta
-      }
-      // funcion para cambiar de pregunta
+
       function nextDiv(nDiv,idPopup){
         document.getElementById("myPopup"+idPopup).classList.toggle("show");
         document.getElementById('IdAnNumero'+nDiv).style.display = 'none';
@@ -200,7 +186,7 @@
         else{
           document.getElementById('IdAnNumero'+(nDiv+1)).style.display = 'block';
         }
-      } 
-    </script> 
+      }
+    </script>
   </body>
 </html>
